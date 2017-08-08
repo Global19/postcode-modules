@@ -17,13 +17,11 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
 ### Create a modular JAR (make sure 'bin' exists)
 
-  - ```jar --create --file bin/postcodevalidator.jar --module-version=1.0 -C \
-    nl.ekholabs.postcode.validator .```
+  - ```jar --create --file bin/postcodevalidator.jar --module-version=1.0 -C nl.ekholabs.postcode.validator .```
 
 ### Specify MainClass
 
-  - ```jar --create --file bin/addresschecker.jar --module-version=1.0 \
-    --main-class=nl.ekholabs.address.checker.api.Application -C nl.ekholabs.address.checker .```
+  - ```jar --create --file bin/addresschecker.jar --module-version=1.0 --main-class=nl.ekholabs.address.checker.api.Application -C nl.ekholabs.address.checker .```
 
 ### Run module
 
@@ -31,8 +29,7 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
 ### Create a runtime image
 
-  - ```jlink --module-path $JAVA_HOME/jmods:bin --add-modules nl.ekholabs.address.checker \
-    --output linkedmod```
+  - ```jlink --module-path $JAVA_HOME/jmods:bin --add-modules nl.ekholabs.address.checker --output linkedmod```
 
 ### List modules from the image
 
@@ -45,5 +42,4 @@ The Postcode application is a project used to demonstrate the use of the coolest
 ### Reducing image size
 
   - ```rm -rf linkedmod```
-  - ```jlink --module-path $JAVA_HOME/jmods:bin --add-modules nl.ekholabs.address.checker \
-    --output linkedmod --compress=2```
+  - ```jlink --module-path $JAVA_HOME/jmods:bin --add-modules nl.ekholabs.address.checker --output linkedmod --compress=2```
