@@ -1,7 +1,8 @@
 package nl.ekholabs.address.checker;
 
 import nl.ekholabs.address.checker.api.AddressChecker;
-import nl.ekholabs.postcode.validator.api.PostcodeValidatorFactory;
+import nl.ekholabs.postcode.validator.api.PostcodeValidatorService;
+import nl.ekholabs.postcode.validator.api.CountryEnum;
 
 public final class AddressCheckerService implements AddressChecker {
 
@@ -17,7 +18,7 @@ public final class AddressCheckerService implements AddressChecker {
     return instance;
   }
 
-  public boolean isValidPostode(final String postcode) {
-    return PostcodeValidatorFactory.getInstance().isValid(postcode);
+  public boolean isValidPostode(final String postcode, final CountryEnum countryCode) {
+    return PostcodeValidatorService.getInstance().isValid(postcode, countryCode);
   }
 }
