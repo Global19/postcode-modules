@@ -1,4 +1,4 @@
-# Postcode Checker Demo Application 
+# Postcode Checker Demo Application
 
 The Postcode application is a project used to demonstrate the use of the coolest add-on to the JDK 9: Project Jigsaw.
 
@@ -9,11 +9,11 @@ The Postcode application is a project used to demonstrate the use of the coolest
 ### Build Modules
 
   - javac -d nl.ekholabs.postcode.validator $(find src/nl.ekholabs.postcode.validator -name "*.java")
-  - javac -p src/. -d nl.ekholabs.address.checker $(find src/nl.ekholabs.address.checker -name "*.java")
+  - javac -p . -d nl.ekholabs.address.checker $(find src/nl.ekholabs.address.checker -name "*.java")
 
 ### Run Application
 
-  - java -p src/. -m nl.ekholabs.address.checker/nl.ekholabs.address.checker.api.Application 3252RG
+  - java -p . -m nl.ekholabs.address.checker/nl.ekholabs.address.checker.api.Application 3252RG nl
 
 ### Create a modular JAR (make sure 'bin' exists)
 
@@ -25,7 +25,7 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
 ### Run module
 
-  - java -p bin -m nl.ekholabs.address.checker 3452RG
+  - java -p bin -m nl.ekholabs.address.checker 3452RG nl
 
 ### Create a runtime image
 
@@ -37,7 +37,7 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
 ### Run application from the image
 
-  - linkedmod/bin/java -m nl.ekholabs.address.checker 3452RG
+  - linkedmod/bin/java -m nl.ekholabs.address.checker 3452RG nl
 
 ### Reducing image size
 
