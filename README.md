@@ -8,8 +8,12 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
 ### Build Modules
 
-  - ```javac -d nl.ekholabs.postcode.validator $(find src/nl.ekholabs.postcode.validator -name "*.java")```
+  - ```javac --module-path nl.ekholabs.address.checker -d nl.ekholabs.postcode.validator $(find src/nl.ekholabs.postcode.validator -name "*.java")```
   - ```javac -p . -d nl.ekholabs.address.checker $(find src/nl.ekholabs.address.checker -name "*.java")```
+
+#### Multi-module compilation
+
+  - ```javac -d . --module-source-path src $(find src -name "*.java")```
 
 ### Run Application
 
