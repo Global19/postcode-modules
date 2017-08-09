@@ -2,6 +2,9 @@ package nl.ekholabs.address.checker.api;
 
 import nl.ekholabs.address.checker.AddressCheckerService;
 import nl.ekholabs.postcode.validator.util.CountryEnum;
+import nl.ekholabs.postcode.validator.model.Postcode;
+
+import com.google.gson.Gson;
 
 public final class Application {
 
@@ -11,17 +14,15 @@ public final class Application {
       throw new IllegalArgumentException("First parameter must be the postcode and second the country code.");
     }
 
-    final String postcode = args[0];
+    final String code = args[0];
     final String countryCode = args[1];
 
     final CountryEnum countryEnum = CountryEnum.findByCode(countryCode);
+    final Postcode postcode = AddressCheckerService.getInstance().validatePostcode(code, countryEnum);
 
-    final boolean isValidPostcode = AddressCheckerService.getInstance().isValidPostode(postcode, countryEnum);
+    final Gson gson = new Gson();
+    final String json = gson.toJson(postcode);
 
-    if(isValidPostcode){
-        System.out.println(postcode + " is a valid postcode.");
-    } else {
-        System.out.println(postcode + " is not a valid postcode.");
-    }
+    System.out.println(json);
   }
 }

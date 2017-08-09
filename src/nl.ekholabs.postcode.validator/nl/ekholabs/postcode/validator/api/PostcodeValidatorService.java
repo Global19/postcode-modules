@@ -2,6 +2,7 @@ package nl.ekholabs.postcode.validator.api;
 
 import nl.ekholabs.postcode.validator.api.PostcodeValidator;
 import nl.ekholabs.postcode.validator.util.CountryEnum;
+import nl.ekholabs.postcode.validator.model.Postcode;
 
 import java.util.regex.Pattern;
 
@@ -19,11 +20,15 @@ public final class PostcodeValidatorService implements PostcodeValidator {
     return instance;
   }
 
-  public boolean isValid(final String postcode, final CountryEnum countryEnum) {
+  public Postcode validate(final String postcode, final CountryEnum countryEnum) {
     final Pattern pattern = Pattern.compile(countryEnum.getRegex());
+    String message;
     if (!pattern.matcher(postcode).matches()) {
-      return false;
+      message = String.format("Invalid postcode for country with code: '%s'", countryEnum.getCountryCode());
+    } else {
+      message = String.format("Valid postcode for country with code: '%s'", countryEnum.getCountryCode());
     }
-    return true;
+
+    return new Postcode(postcode, countryEnum, message);
   }
 }
