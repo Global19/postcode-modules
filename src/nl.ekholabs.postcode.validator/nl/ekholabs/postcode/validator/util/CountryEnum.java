@@ -1,4 +1,4 @@
-package nl.ekholabs.postcode.validator.api;
+package nl.ekholabs.postcode.validator.util;
 
 import java.util.stream.Stream;
 

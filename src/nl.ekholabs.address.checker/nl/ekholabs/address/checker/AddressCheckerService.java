@@ -2,7 +2,7 @@ package nl.ekholabs.address.checker;
 
 import nl.ekholabs.address.checker.api.AddressChecker;
 import nl.ekholabs.postcode.validator.api.PostcodeValidatorService;
-import nl.ekholabs.postcode.validator.api.CountryEnum;
+import nl.ekholabs.postcode.validator.util.CountryEnum;
 
 public final class AddressCheckerService implements AddressChecker {
 

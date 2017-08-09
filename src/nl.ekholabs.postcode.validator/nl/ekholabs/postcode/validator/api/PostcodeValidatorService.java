@@ -1,7 +1,7 @@
 package nl.ekholabs.postcode.validator.api;
 
 import nl.ekholabs.postcode.validator.api.PostcodeValidator;
-import nl.ekholabs.postcode.validator.api.CountryEnum;
+import nl.ekholabs.postcode.validator.util.CountryEnum;
 
 import java.util.regex.Pattern;
 
