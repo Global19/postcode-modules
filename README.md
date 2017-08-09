@@ -15,7 +15,7 @@ It's important to go over the commands below and try to understand them. However
   - GSON from JAR
     - ```./fat_build.sh```
 
-## Using GSON from source
+## Using GSON from Source
 
 In this part, and also in the one-liner, I use the latest GSON source code and convert it to a Java 9 Module.
 If you are wondering how I found out which packages the GSON library depends on, so I could create a module out of it, please check the command below:
@@ -32,35 +32,35 @@ Remark: jdeps only works with JAR files that are not modularized.
   - ```javac -p com.google.gson -d com.google.gson $(find src/com.google.gson -name "*.java")```
   - ```javac -p . -d nl.ekholabs.address.checker $(find src/nl.ekholabs.address.checker -name "*.java")```
 
-### Create a modular JAR (make sure 'bin' exists)
+### Create a Modular JAR (make sure 'bin' exists)
 
   - ```jar --create --file bin/postcodevalidator.jar --module-version=1.0 -C nl.ekholabs.postcode.validator .```
 
-### Create the GSON library JAR module...
+### Create the GSON library JAR Module
 
   - ```jar --create --file bin/gson.jar --module-version=1.0 -C com.google.gson .```
 
-### Specify MainClass
+### Specify the Main-Class
 
   - ```jar --create --file bin/addresschecker.jar --module-version=1.0 --main-class=nl.ekholabs.address.checker.api.Application -C nl.ekholabs.address.checker .```
 
-### Run module
+### Run the Application Module
 
   - ```java -p bin -m nl.ekholabs.address.checker 3452RG nl```
 
-### Create a runtime image
+### Create a Java Runtime Image
 
   - ```jlink -p $JAVA_HOME/jmods:bin --add-modules nl.ekholabs.address.checker --output linkedmod```
 
-### List modules from the image
+### List Modules from the Image
 
   - ```linkedmod/bin/java --list-modules```
 
-### Run application from the image
+### Run the Application from the Image
 
   - ```linkedmod/bin/java -m nl.ekholabs.address.checker 3452RG nl```
 
-### Reducing image size
+### Reduce the Image Size
 
   - ```rm -rf linkedmod```
   - ```jlink -p $JAVA_HOME/jmods:jars:bin --add-modules nl.ekholabs.address.checker --output linkedmod --compress=2```
@@ -75,7 +75,7 @@ If you are a persistent person, as I'm, there is a way out. However, it involves
 
 You do not have to change anything in the ```com.google.gson``` module. Remember: we are not using the source, Luke!
 
-### Updating the Module Descriptor
+### Update the Module Descriptor
 
 The change is expected to be made on both ```nl.ekholabs.address.checker``` and ```nl.ekholabs.postcode.validator``` modules.
 
@@ -86,14 +86,14 @@ The change is expected to be made on both ```nl.ekholabs.address.checker``` and 
 - ```javac -p .:jars -d nl.ekholabs.postcode.validator $(find src/nl.ekholabs.postcode.validator -name "*.java")```
 - ```javac -p .:jars -d nl.ekholabs.address.checker $(find src/nl.ekholabs.address.checker -name "*.java")```
 
-### Create a modular JAR (make sure 'bin' exists)
+### Create a Modular JAR (make sure 'bin' exists)
 
   - ```jar --create --file bin/postcodevalidator.jar --module-version=1.0 -C nl.ekholabs.postcode.validator .```
 
-### Specify MainClass
+### Specify the Main-Class
 
   - ```jar --create --file bin/addresschecker.jar --module-version=1.0 --main-class=nl.ekholabs.address.checker.api.Application -C nl.ekholabs.address.checker .```
 
-### Run module
+### Run the Application Module
 
   - ```java -p bin:jars -m nl.ekholabs.address.checker 3452RG nl```
