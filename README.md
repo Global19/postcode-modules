@@ -6,6 +6,13 @@ The Postcode application is a project used to demonstrate the use of the coolest
 
   - [JDK 9](http://jdk.java.net/9/)
 
+### One-liner Builder
+
+It's important to go over the commands below and try to understand them. However, if you want to quickly build
+and run the application, do the following:
+
+  - ```./build.sh```
+
 ### Build Modules
 
   - ```javac --module-path nl.ekholabs.address.checker -d nl.ekholabs.postcode.validator $(find src/nl.ekholabs.postcode.validator -name "*.java")```
