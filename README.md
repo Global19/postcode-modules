@@ -1,6 +1,6 @@
 # Postcode Checker Demo Application
 
-The Postcode application is a project used to demonstrate the use of the coolest add-on to the JDK 9: Project Jigsaw.
+The Postcode application is a project used to demonstrate the use of the coolest add-on to the JDK 9: The Jigsaw Project.
 
 ### Requirements
 
