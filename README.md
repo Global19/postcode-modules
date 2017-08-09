@@ -67,7 +67,7 @@ Remark: jdeps only works with JAR files that are not modularized.
 
 ## Using GSON from JAR file
 
-If you want to build it quicly, please execute the ```fat_build.sh``` script. If you want to try it out, please make sure you modify the ```module-info.java``` file in the ```nl.ekholabs.address.checker``` module.
+If you want to build it quicly, please execute the ```fat_build.sh``` script. If you want to try it out, please make sure you modify the ```module-info.java``` file descriptors in both modules.
 
 Although you can use the JAR file with Java 9 modularized code, you cannot create Java Images with JLink. Unfortunately, the ```jlink``` tool need a ```module-info.class``` packed with the JAR. Since it's not there, it will fail during execution.
 
@@ -77,7 +77,7 @@ You do not have to change anything in the ```com.google.gson``` module. Remember
 
 ### Updating the Module Descriptor
 
-The change is expected to be made only on the ```nl.ekholabs.address.checker``` module.
+The change is expected to be made on both ```nl.ekholabs.address.checker``` and ```nl.ekholabs.postcode.validator``` modules.
 
   - Replace ```com.google.gson``` with only ```gson```.
 
